@@ -4,10 +4,35 @@
       <div class="card-body">
         <h5 class="card-title">Formulario de registro</h5>
         <form>
-          <app-cliente (cliente)="clienteDatos"></app-cliente>
-          <app-direccion (direccion)="direccionDatos"></app-direccion>
+          <app-cliente [clienteDatos] = "cliente"></app-cliente>
+          <app-direccion [direccionDatos] = "direccion"></app-direccion>
+          <label for="idCalificacion">Calificación</label>
+          <select [(ngModel)]="usuario.calificacion" class="form-control" id="idCalificacion" name="calificacion">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+          </select>
           <button type="submit" class="btn btn-primary" (click)="registrar()">Registrar</button>
         </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Calificaciones</h2>
+        <hr>
+        <div *ngFor="let usuario of listaUsuarios">
+          <h1>{{usuario.cliente.nombres}} {{usuario.cliente.apellidos}}</h1>
+          <div class="progress">
+            <div [ngStyle]="{'width': usuario.calificacion}" class="progress-bar" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="10"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

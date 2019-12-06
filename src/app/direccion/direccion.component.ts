@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { Direccion } from './shared/direccion.model';
 import { Cliente } from '../cliente/shared/cliente.model';
 
@@ -9,14 +9,12 @@ import { Cliente } from '../cliente/shared/cliente.model';
 })
 export class DireccionComponent implements OnInit {
 
-  direccionDatos: Direccion;
+  @Input() direccionDatos: Direccion;
   // @Output() direccion: Direccion;
   // listaDireccion: Direccion[];
   constructor() {
     this.direccionDatos = new Direccion();
-    // this.listaDireccion = [];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 }

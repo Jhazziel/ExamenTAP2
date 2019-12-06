@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { Cliente } from './shared/cliente.model';
 import { EventEmitter } from 'events';
 
@@ -10,12 +10,13 @@ import { EventEmitter } from 'events';
 export class ClienteComponent implements OnInit {
   // @Output() clienteMsg = new EventEmitter<any>();
 
-  clienteDatos: Cliente;
+  @Input() clienteDatos: Cliente;
   constructor() {
     this.clienteDatos = new Cliente();
   }
 
   ngOnInit() {
+
   }
 
   // alerta(msg: Cliente){

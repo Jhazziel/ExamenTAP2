@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Cliente } from './cliente/shared/cliente.model';
 import { Direccion } from './direccion/shared/direccion.model';
+import { Usuario } from './shared/usuario.model';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +14,28 @@ export class AppComponent {
   // clienteDatos: Cliente;
   // direccionDatos: Direccion;
 
-  @Input() cliente: Cliente;
-  @Input() direccion: Direccion;
+  cliente: Cliente;
+  direccion: Direccion;
+  listaUsuarios: Usuario[];
+  usuario: Usuario;
 
   constructor() {
     this.cliente = new Cliente();
     this.direccion = new Direccion();
+    this.usuario = new Usuario();
+    this.listaUsuarios = [];
   }
+
   registrar() {
-    console.log(this.cliente.nombres);
-    console.log(this.direccion.direccion);
+    this.usuario.cliente = this.cliente;
+    this.usuario.direccion = this.direccion;
+    this.usuario.calificacion = (10 * this.usuario.calificacion) + '%';
+    this.listaUsuarios.push(this.usuario);
+    console.log(this.listaUsuarios);
+    this.cliente = new Cliente();
+    this.direccion = new Direccion();
+    this.usuario = new Usuario();
   }
+
+  OnInit() { }
 }
